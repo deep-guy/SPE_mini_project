@@ -4,5 +4,5 @@
   tasks:
     - name: Pull devops calculator image
       docker_image:
-        name: deep-guy/SPE_mini_project
+        name: deepguy499/spe_mini_project
         source: pull
