@@ -2,7 +2,7 @@
 - name: Pull docker image of Lab3Junit
   hosts: all
   tasks:
-    - name: Pull junit devops image
+    - name: Pull devops calculator image
       docker_image:
         name: deep-guy/SPE_mini_project
         source: pull
