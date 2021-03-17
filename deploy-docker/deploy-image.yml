@@ -2,7 +2,7 @@
 - name: Pull docker image of Lab3Junit
   hosts: all
   vars:
-    ansible_python_interpreter: /usr/bin/python3
+    ansible_python_interpreter: "python"
   tasks:
     - name: Pull devops calculator image
       docker_image:
