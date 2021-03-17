@@ -26,8 +26,8 @@ public class CalculatorTest {
 
     @Test
     public void factorialFalsePositive(){
-        assertEquals("Factorial of number for False Positive", 20, calculator.Factorial(3), DELTA);
-        assertEquals("Factorial of number for False Positive", 121, calculator.Factorial(5), DELTA);
+        assertNotEquals("Factorial of number for False Positive", 20, calculator.Factorial(3), DELTA);
+        assertNotEquals("Factorial of number for False Positive", 121, calculator.Factorial(5), DELTA);
     }
 
     @Test
