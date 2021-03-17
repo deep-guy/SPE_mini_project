@@ -1,8 +1,14 @@
 package calculator;
 import java.util.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Calculator
 {
+    private static final Logger logger = LogManager.getLogger(Calculator.class);
+    // public Calculator(){}
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -21,7 +27,7 @@ public class Calculator
             try{
                 option = in.nextInt();
             } catch(InputMismatchException error){
-                System.out.println("Invalid input. Calculator is shutting down.");
+                logger.error("Invalid input. Calculator is shutting down.");
                 return;
             }
             if(option < 1 || option > 5)
@@ -36,13 +42,14 @@ public class Calculator
                 try{
                     op1 = in.nextDouble();
                 } catch(InputMismatchException error){
-                    System.out.println("Invalid input. Calculator is shutting down.");
+                    logger.error("Invalid input. Calculator is shutting down.");
                     return;
                 }
                 if(option == 1)
                 {
                     if(op1 < 0){
-                        System.out.println("Invalid input for Square root. Cannot be a negative number");
+                        logger.error("Invalid input for Square root. Cannot be a negative number");
+                        return;
                     }
                     else{
                         double result = squareRoot(op1);
@@ -55,8 +62,9 @@ public class Calculator
                 else if(option == 2)
                 {
                     if(op1 < 0){
-                        System.out.println("Invalid input for factorial. Cannot be a negative number");
-                        System.out.println("");
+                        logger.error("Invalid input for factorial. Cannot be a negative number");
+                        return;
+                        // System.out.println("");
                     }
                     else{
                         System.out.println("Decimal Inputs have been typecast to integer");
@@ -79,7 +87,7 @@ public class Calculator
                     try{
                         op2 = in.nextDouble();
                     } catch(InputMismatchException error){
-                        System.out.println("Invalid input. Calculator is shutting down.");
+                        logger.error("Invalid input. Calculator is shutting down.");
                         return;
                     }
 
@@ -93,21 +101,34 @@ public class Calculator
     }
 
     public static double squareRoot(double a){
-        return Math.sqrt(a);
+        logger.info("[SQUARE ROOT] - " + a);
+        double result = Math.sqrt(a);
+        logger.info("[RESULT - SQUARE ROOT] - " + result);
+        return result;
     }
 
     public static int Factorial(int a){
+        logger.info("[FACTORIAL] - " + a);
+        int result = 0;
         if(a == 0)
-            return 1;
+            result = 1;
         else
-            return a*Factorial(a-1);
+            result = a*Factorial(a-1);
+        logger.info("[RESULT - FACTORIAL] - " + result);
+        return result;
     }
 
     public static double natlog(double a){
-        return Math.log(a);
+        logger.info("[NATLOG] - " + a);
+        double result = Math.log(a);
+        logger.info("[RESULT - NATLOG] - " + result);
+        return result;
     }
 
     public static double power(double a, double b){
-        return Math.pow(a,b);
+        logger.info("[POWER] - " + a + ", " + b);
+        double result =  Math.pow(a,b);
+        logger.info("[RESULT - POWER] - " + result);
+        return result;
     }
 }

@@ -12,51 +12,46 @@ public class CalculatorTest {
         assertEquals("Square root of double number for True Positive", 3.0, calculator.squareRoot(9.0), DELTA);
     }
 
-    // @Test
-    // public void addingFalsePositive(){
-    //     assertNotEquals("Adding two integer numbers for False Positive", 6, calculator.add(2, 2), DELTA);
-    //     assertNotEquals("Adding two double numbers for False Positive", 7.3, calculator.add(2.1, 3.2), DELTA);
-    // }
+    @Test
+    public void squareRootFalsePositive(){
+        assertNotEquals("Square root of double number for False Positive", 9.0, calculator.squareRoot(16.0), DELTA);
+        assertNotEquals("Square root of double number for False Positive", 9.0, calculator.squareRoot(9.0), DELTA);
+    }
 
-    // @Test
-    // public void subtractingTruePositive(){
-    //     assertEquals("Subtracting two integer numbers for True Positive", 0, calculator.subtract(2, 2), DELTA);
-    //     assertEquals("Subtracting two double numbers for True Positive", -1.1, calculator.subtract(2.1, 3.2), DELTA);
-    // }
+    @Test
+    public void factorialTruePositive(){
+        assertEquals("Factorial of number for True Positive", 6, calculator.Factorial(3), DELTA);
+        assertEquals("Factorial of number for True Positive", 120, calculator.Factorial(5), DELTA);
+    }
 
-    // @Test
-    // public void subtractingFalsePositive(){
-    //     assertNotEquals("Subtracting two integer numbers for False Positive", 6, calculator.subtract(2, 2), DELTA);
-    //     assertNotEquals("Subtracting two double numbers for False Positive", -7.3, calculator.subtract(2.1, 3.2), DELTA);
-    // }
+    @Test
+    public void factorialFalsePositive(){
+        assertEquals("Factorial of number for False Positive", 20, calculator.Factorial(3), DELTA);
+        assertEquals("Factorial of number for False Positive", 121, calculator.Factorial(5), DELTA);
+    }
 
-    // @Test
-    // public void multiplyingTruePositive(){
-    //     assertEquals("Multiplying two integer numbers for True Positive", 4, calculator.multiply(2, 2), DELTA);
-    //     assertEquals("Multiplying two double numbers for True Positive", 6.72, calculator.multiply(2.1, 3.2), DELTA);
-    // }
+    @Test
+    public void nLogTestTP() {
+        double ret = Calculator.natlog(2.718);
+        assertEquals(1,ret, 0.2f);
+    }
 
-    // @Test
-    // public void multiplyingFalsePositive(){
-    //     assertNotEquals("Multiplying two integer numbers for False Positive", 6, calculator.multiply(2, 2), DELTA);
-    //     assertNotEquals("Multiplying two double numbers for False Positive", 7.3, calculator.multiply(2.1, 3.2), DELTA);
-    // }
+    @Test
+    public void nLogTestTN() {
+        double ret = Calculator.natlog(2.718);
+        assertNotEquals(2,ret, 0.2f);
+    }
 
-    // @Test
-    // public void dividingTruePositive(){
-    //     assertEquals("Dividing two integer numbers for True Positive", 1, calculator.divide(2, 2), DELTA);
-    //     assertEquals("Dividing two double numbers for True Positive", Double.NaN, calculator.divide(0, 0), DELTA);
-    //     assertEquals("Dividing two double numbers for True Positive", Double.POSITIVE_INFINITY, calculator.divide(1, 0), DELTA);
-    //     assertEquals("Dividing two double numbers for True Positive", Double.NEGATIVE_INFINITY, calculator.divide(-1, 0), DELTA);
-    // }
+    @Test
+    public void powerTestTP() {
+        double ret = Calculator.power(2, 2);
+        assertEquals(4,ret, 0.0f);
+    }
 
-    // @Test
-    // public void dividingFalsePositive(){
-    //     assertNotEquals("Dividing two integer numbers for True Positive", 1, calculator.divide(2.3, 1.3), DELTA);
-    //     assertNotEquals("Dividing two double numbers for True Positive", 0, calculator.divide(0, 0), DELTA);
-    //     assertNotEquals("Dividing two double numbers for True Positive", 1, calculator.divide(1, 0), DELTA);
-    //     assertNotEquals("Dividing two double numbers for True Positive", -1, calculator.divide(-1, 0), DELTA);
-    // }
-
+    @Test
+    public void powerTestTN() {
+        double ret = Calculator.power(2, 2);
+        assertNotEquals(5,ret, 0.0f);
+    }
 
 }
